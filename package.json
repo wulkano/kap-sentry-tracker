@@ -1,0 +1,13 @@
+{
+  "name": "kap-sentry-tracker",
+  "version": "1.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "@vercel/node": "^1.7.1",
+    "typescript": "^3.9.6"
+  },
+  "dependencies": {
+    "got": "^11.3.0"
+  }
+}
