@@ -4,7 +4,7 @@ import got from 'got';
 export default async (req: NowRequest, res: NowResponse) => {
   console.log(req.headers['x-github-event']);
 
-  if (req.headers['x-github-event'] === 'issue') {
+  if (req.headers['x-github-event'] === 'issues') {
     console.log(req.body);
     res.end();
   } else {
