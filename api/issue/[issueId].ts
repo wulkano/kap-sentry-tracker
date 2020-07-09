@@ -19,7 +19,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 
     const checkSentryIssue = sentryIssueChecker(issueId, shortId);
 
-    const [issue] = await got.paginate.all(`https://api.github.com/repos/karaggeorge/kap-test-playground/issues?state=all&labels=sentry`, {
+    const [issue] = await got.paginate.all(`https://api.github.com/repos/wulkano/kap/issues?state=all&labels=sentry`, {
       headers: {
         accept: 'application/vnd.github.v3+json',
         authorization: `token ${process.env.GH_TOKEN}`
