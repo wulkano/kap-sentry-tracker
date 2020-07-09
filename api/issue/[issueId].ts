@@ -3,7 +3,7 @@ import got from 'got';
 
 const sentryIssueChecker = (id, shortId) => ({body, pull_request}) => {
   return !pull_request && body && (
-    body.includes(`SENTRY_ID=${id}`) ||
+    body.includes(`SENTRY_ISSUE_ID=${id}`) ||
     body.includes(`https://sentry.io/organizations/wulkano-l0/issues/${id}/`) ||
     body.includes(shortId)
   );
