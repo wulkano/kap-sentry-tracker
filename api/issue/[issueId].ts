@@ -3,7 +3,7 @@ import got from 'got';
 
 const sentryIssueChecker = (id, shortId) => ({body, pull_request}) => {
   return !pull_request && body && (
-    body.includes(`SENTRY_ID=${id}`) ||
+    body.includes(`SENTRY_ISSUE_ID=${id}`) ||
     body.includes(`https://sentry.io/organizations/wulkano-l0/issues/${id}/`) ||
     body.includes(shortId)
   );
@@ -19,7 +19,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 
     const checkSentryIssue = sentryIssueChecker(issueId, shortId);
 
-    const [issue] = await got.paginate.all(`https://api.github.com/repos/karaggeorge/kap-test-playground/issues?state=all&labels=sentry`, {
+    const [issue] = await got.paginate.all(`https://api.github.com/repos/wulkano/kap/issues?state=all&labels=sentry`, {
       headers: {
         accept: 'application/vnd.github.v3+json',
         authorization: `token ${process.env.GH_TOKEN}`
@@ -45,7 +45,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         issueId,
         shortId,
         permalink,
-        ghIssueTemplate: `<!---SENTRY_ISSUE_ID=${issueId}--->\n\nSentry Issue: [${shortId}](${permalink})\n\n`
+        ghIssueTemplate: `<!---SENTRY_ISSUE_ID=${issueId}--->\n\n**Sentry Issue:** [${shortId}](${permalink})\n\n`
       });
     }
   } catch (error) {
