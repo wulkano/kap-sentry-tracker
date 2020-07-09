@@ -45,7 +45,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         issueId,
         shortId,
         permalink,
-        ghIssueTemplate: `<!---SENTRY_ISSUE_ID=${issueId}--->\n\nSentry Issue: [${shortId}](${permalink})\n\n`
+        ghIssueTemplate: `<!---SENTRY_ISSUE_ID=${issueId}--->\n\n**Sentry Issue:** [${shortId}](${permalink})\n\n`
       });
     }
   } catch (error) {
